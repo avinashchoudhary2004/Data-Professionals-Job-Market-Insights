@@ -23,12 +23,10 @@ The dataset was imported from hugging face (Link: https://huggingface.co/dataset
 
 Here are the questions I want to answer in this project:
 
-1. What are salary distribution for different data professional jobs
-2. What are the skills most in demand for the top 5 most popular data roles?
-3. How well do jobs and skills pay for Data Analysts? How each skills pays for Data analysts?
-4. How are in-demand skills trending for Data Analysts?
-5. What are the optimal skills for data analysts to learn? (High Demand AND High Paying)
-6.  
+1. What are the skills most in demand for the junior and senior data roles?
+2. What are salary distribution for different data professional jobs?
+3. How well do jobs and skills pay for Data Analysts? 
+4. What are the optimal skills for data analysts to learn? (High Demand AND High Paying)
 
 # Complete procedure of the project
 
