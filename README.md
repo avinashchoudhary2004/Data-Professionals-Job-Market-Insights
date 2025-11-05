@@ -1,6 +1,32 @@
 
 # Data Professionals Job Market Insights
 
+## Executive Summary
+<p>
+  This project presents a comprehensive analysis of the <strong>U.S. data job market (2023)</strong> to uncover actionable insights about 
+  <strong>skills, salaries, and career progression</strong> for data professionals. 
+  Using the Hugging Face dataset <code>lukebarousse/data_jobs</code>, the analysis explores thousands of job postings across multiple roles, 
+  including <strong>Data Analyst</strong>, <strong>Data Scientist</strong>, <strong>Data Engineer</strong>, and 
+  <strong>Machine Learning Engineer</strong>.
+</p>
+
+<p>
+  Through systematic data preparation, cleaning, and visualization using 
+  <strong>Python, Pandas, Matplotlib, and Seaborn</strong>, the study identifies:
+</p>
+
+<ul>
+  <li>The <strong>most demanded and high-paying skills</strong> across junior and senior levels.</li>
+  <li><strong>Skill-salary relationships</strong> that show where demand does not always match compensation.</li>
+  <li><strong>Salary distributions</strong> by role and geography, revealing how experience and location shape pay.</li>
+  <li>The <strong>most optimal skill sets</strong> that offer the best return on learning investment for data professionals.</li>
+</ul>
+
+<p>
+  Overall, this analysis serves as a <strong>data-driven career guide</strong> for aspiring and experienced data professionals, emphasizing 
+  the importance of <strong>Python, SQL, and cloud/AI-related skills</strong> for long-term career success.
+</p>
+
 ## Overview
 
 This project explores the US job posting market for data professionals (2023) using a dataset imported from the Hugging Face dataset `lukebarousse/data_jobs`. The analysis uses Python (Pandas, Matplotlib, Seaborn) to perform data preparation, exploratory data analysis, skills and salary analysis, and to recommend an optimal skill-set for different data roles.
@@ -9,12 +35,11 @@ This project explores the US job posting market for data professionals (2023) us
 
 Dataset source: https://huggingface.co/datasets/lukebarousse/data_jobs — job posting data for 2023 (US job postings subset was used). The dataset contains job titles, company, location, job posting date, salary information (when present), job attributes, and lists of skills/requirements extracted from postings.
 
-## Tools I used
+## Tools used
 
-- **Pandas** – Data manipulation and analysis  
-- **Matplotlib** and **Seaborn** – Data visualization  
-- **Jupyter Notebook** – Writing and running Python scripts  
-- **Git** and **GitHub** – Version control and collaboration
+- **Languages / Libraries:** Python 3.8+, Pandas, Matplotlib, Seaborn, datasets (Hugging Face), ast.  
+- **Environment:** Jupyter Notebook.  
+- **Version control:** Git, GitHub.
 
 
 ## The questions
@@ -126,17 +151,17 @@ df_US_filled['salary_year_avg'] = df_US_filled.apply(
 )
 ```
 
-## Analysis
+# Analysis
 
 Each Jupyter notebooks were designed to examine distinct dimensions of the data job market to answer the questions. My approach to each is summarized below:.
 
-### 1. What are the skills most in demand for different data roles?
+## 1. What are the skills most in demand for different data roles?
 
 To identify the most in-demand skills, I un-nested the job_skills list using explode() to analyze each skill individually. I then counted the frequency of each skill per job title and calculated its percentage share relative to the total postings for that role. This normalized data was used to plot the top 5 skills for both junior and senior positions, revealing true demand within each category.
 
 View my notebook with detailed steps here: [3_Job_Skills_Analysis.ipynb](3_Job_Skills_Analysis.ipynb)
 
-#### Visualize Data
+### Visualize Data
 ```python
 # plotting top 5 skills count for junior roles
 fig, ax = plt.subplots(len(junior_roles), 1, figsize=(10,8), sharex=True)
@@ -157,41 +182,67 @@ for i, title in enumerate(junior_roles):
 fig.suptitle('Most Demanded job skills by job title', fontsize=18, fontweight='bold')
 fig.tight_layout()
 ```
-#### Output
+### Output
 <table align="center">
   <tr>
     <td align="center" width="50%">
-      <img src="image.png" alt="Junior roles" width="90%", height=300>
-      <br><b>For Junior Roles</b>
+      <img src="./plots/output-1.png" alt="Junior roles" width="90%" height="300">
+      <br><strong>For Junior Roles</strong>
     </td>
     <td align="center" width="50%">
-      <img src="image-1.png" alt="Senior roles" width="90%", height=300>
-      <br><b>For Senior Roles</b>
+      <img src="./plots/output-2.png" alt="Senior roles" width="90%" height="300">
+      <br><strong>For Senior Roles</strong>
     </td>
   </tr>
 </table>
 
-#### Insights
 
-- Core Skills: SQL and Python are the universal requirements. SQL is a top-2 skill for all roles except Machine Learning Engineer (where it's #3). Python is the #1 skill for all Scientist and ML Engineer roles and #2 for Data Engineers.
+### Insights
 
-- Analyst Roles (Data/Business): These roles are defined by business intelligence tools. Excel and Tableau are critical, appearing in the top 3, which is unique compared to other roles.
+<ul>
+  <li>
+    <strong>Python</strong> and <strong>SQL</strong> dominate the data domain, appearing as top skills across nearly all roles — with 
+    <strong>Python</strong> demanded by up to <strong>85% of Senior Data Scientists</strong> and 
+    <strong>78% of Machine Learning Engineers</strong>, and <strong>SQL</strong> required in 
+    <strong>60–75%</strong> of analyst and engineering roles.
+  </li>
 
-- Scientist & ML Roles: These are heavily programming-focused. Python is the dominant skill (75% for Data Scientist, 87% for ML Engineer). R is also a key differentiator for these positions.
+  <li>
+    <strong>Role specialization drives tool preference:</strong> 
+    <strong>Analysts</strong> lean on <strong>Excel</strong> and <strong>Tableau</strong> for reporting 
+    (up to <strong>49%</strong> and <strong>46%</strong> respectively), while 
+    <strong>Engineers</strong> prioritize <strong>cloud</strong> and <strong>big data tools</strong> 
+    like <strong>AWS (54%)</strong> and <strong>Spark (44%)</strong>, reflecting differing technical focuses.
+  </li>
 
-- Data Engineer Roles: This role is a hybrid of programming and cloud infrastructure, defined by SQL, Python, and cloud platforms like AWS and Azure.
+  <li>
+    <strong>Machine Learning Engineers</strong> and <strong>Data Scientists</strong> emphasize 
+    <strong>programming</strong> and <strong>modeling</strong> over visualization, with strong demand for 
+    <strong>Python (78–85%)</strong>, <strong>R</strong>, and deep learning frameworks like 
+    <strong>TensorFlow</strong> and <strong>PyTorch (~35%)</strong>.
+  </li>
 
-- Seniority vs. Junior Roles: The core skills remain largely the same regardless of seniority. Senior Data Analysts still need SQL and Excel, just as junior ones do. The primary difference is a higher demand for specialized tools and cloud skills. For example, Spark and AWS see a notable increase in demand for Senior Data Scientist and Senior Data Engineer roles, suggesting seniority is tied to system-level and cloud competency.
+  <li>
+    <strong>Seniority vs. Junior Roles:</strong> As professionals progress, the demand clearly shifts from 
+    <strong>visualization and reporting tools</strong> (like <strong>Excel</strong> and <strong>Tableau</strong>) 
+    toward <strong>programming</strong>, <strong>database</strong>, and <strong>cloud skills</strong> such as 
+    <strong>Python</strong>, <strong>SQL</strong>, and <strong>AWS</strong>. 
+    <strong>Senior roles</strong> expect deeper <strong>technical fluency</strong> and 
+    <strong>system-level problem-solving</strong>, while <strong>junior roles</strong> focus more on 
+    <strong>data interpretation</strong> and <strong>BI tools</strong>. 
+    This highlights that advancing in data careers requires moving from 
+    <strong>tool-based analysis</strong> to <strong>code-driven and scalable data solutions</strong>.
+  </li>
+</ul>
 
-### 2. How well do jobs and skills pay for different data roles (eg: Data Analyst)?
+## 2. How well do jobs and skills pay for different data roles (eg: Data Analyst)?
 
 To analyze skill value, I filtered the dataset for 'Data Analyst' roles. I then grouped by skill to aggregate both the total count (demand) and the mean salary (pay) for each skill. This allowed me to identify and plot the top 10 highest-paying and top 10 most in-demand skills for this specific role.
 
 View my notebook with detailed steps here: [4_Salary_Analysis.ipynb](4_Salary_Analysis.ipynb)
 
+### Visualize Data
 ``` python
-Visualize Data
-
 # Select job title for the analysis
 job_role = 'Data Analyst'
 
@@ -204,53 +255,72 @@ most_paid_skills = (df_exploded.groupby('job_skills')['salary_year_avg']
                     .agg(['mean', 'count'])
                     .sort_values(by='mean', ascending=False)
                     .head(10)
-                   )
+                    .reset_index(names='job_skills')
+                    .set_index('job_skills', drop=True)
+)
 
 # Most demanded skills
+total_job_post = df_filtered['job_title_short'].count()
 most_demand_skills = (df_exploded.groupby('job_skills')['salary_year_avg']
                       .agg(['count', 'mean'])
                       .sort_values(by='count', ascending=False)
                       .head(10)
-                     )
+                      .reset_index(names='job_skills')
+                      .set_index('job_skills', drop=True)
+)
+most_demand_skills['%_share'] = 100*(most_demand_skills['count']/total_job_post)
 
 # plotting top 10 demanded skills
 fig, ax = plt.subplots(2,1, figsize=(10,8))
-sns.barplot(data=most_demand_skills, x='count', y=most_demand_skills.index, ax=ax[0], ...)
-ax[0].set_title('Top 10 Most In-Demand skills', ...)
+sns.barplot(data=most_demand_skills, x='%_share', y='job_skills', ax=ax[0])
 
 # plotting top 10 paid skills
-sns.barplot(data=most_paid_skills, x='mean', y=most_paid_skills.index, ax=ax[1], ...)
-ax[1].set_title('Top 10 Most Paid skills', ...)
+sns.barplot(data=most_paid_skills, x='mean', y='job_skills', ax=ax[1])
 ```
 
-#### Output
-
-<img src="image-2.png" alt="Most Demanded Skills">
-
-
-#### Insights
-
-- Demand vs. Pay Trade-off: There is a clear disconnect between the most in-demand skills and the highest-paying ones. Foundational skills like SQL, Excel, and Tableau are the most requested, but they are not on the top 10 list for highest pay.
-
-- Foundational Skills: SQL and Excel are, by a massive margin, the most demanded skills. This indicates they are the barrier to entry and are considered standard expectations for a Data Analyst, not high-value specializations.
-
-- Niche Skills Pay More: The highest-paying skills (e.g., Hugging Face, dplyr, mxnet) are highly specialized and appeared in very few job postings. This suggests that niche expertise in advanced libraries commands a significant salary premium.
-
-- The "Sweet Spot": Skills like Airflow and PyTorch represent a good balance. They appear in the top 10 for average salary while still having a respectable demand (counts of 325 and 86, respectively), marking them as valuable and relatively common specializations.
+### Output
+<div style="text-align: center;">
+  <img src="./plots/output-3.png" alt="Most Demanded Skills">
+</div>
 
 
-### 3. How are salaries distributed by Job Title and Location?
+### Insights for Data Analyst role
+<ul>
+  <li>
+    <strong>High-demand vs. high-pay mismatch:</strong> While common tools like 
+    <strong>SQL (51%)</strong>, <strong>Excel (41%)</strong>, and <strong>Tableau (29%)</strong> 
+    dominate demand for Data Analysts, they are <strong>not the highest-paying skills</strong>, 
+    showing that widely used tools often offer lower salary growth.
+  </li>
 
-To get an accurate view of salary distributions, I used the original salary data (before imputation) to preserve the true variance.
+  <li>
+    <strong>Niche and emerging skills drive higher pay:</strong> Specialized frameworks such as 
+    <strong>Hugging Face</strong>, <strong>MXNet</strong>, and <strong>Twilio</strong> 
+    are among the <strong>most paid</strong>, reflecting that 
+    <strong>AI, automation, and advanced programming expertise</strong> 
+    command stronger compensation.
+  </li>
 
-By Job Title:
-I grouped the data by job_title_short to get the median salary for each role and then sorted them from highest to lowest. Finally, I plotted box plots for each role to visualize the salary ranges, 25th/75th percentiles, medians, and outliers.
+  <li>
+    <strong>Traditional vs. modern tool gap:</strong> Analysts relying mainly on 
+    <strong>Excel</strong> and <strong>Tableau</strong> may face salary stagnation, while those 
+    mastering <strong>machine learning frameworks</strong> or <strong>cloud-based tools</strong> 
+    tend to access premium roles and higher pay scales.
+  </li>
 
-By Location:
-To compare salaries geographically, I first identified the top 10 locations with the most job postings. Using the original non-imputed salary data, I plotted box plots for each of these 10 locations to compare their median salaries and pay ranges.
+  <li>
+    <strong>Career insight:</strong> To move beyond entry-level analyst pay, professionals should 
+    gradually <strong>transition from reporting tools to technical and AI-focused skills</strong>, 
+    blending <strong>data analysis</strong> with <strong>automation</strong> and 
+    <strong>modeling capabilities</strong>.
+  </li>
+</ul>
 
-#### Visualize Data
+## 3. How are salaries distributed by Job Title and Location?
 
+To get an accurate view of salary distributions, I used the original salary data (before imputation) to preserve the true variance. I grouped the data by job_title_short and by job location to get the median salary for each role and for top 10 job location. Then sorted them from highest to lowest. Finally, I plotted box plots for both series to visualize the salary ranges, 25th/75th percentiles, medians, and outliers.
+
+### Visualize Data
 ``` python
 # plotting salary distriubtion by job title
 df_known = df[df['original_salary_year_avg'].notna()]
@@ -264,7 +334,7 @@ fig.suptitle('Salary distribution for different job titles', ...)
 ```
 
 ``` python
-# plotting salary distriubtion by job title
+# plotting salary distriubtion by job location
 df_known = df_known[df_known['job_location'].notna()]
 fig, ax = plt.subplots(len(job_loc), 1, figsize=(10, 8))
 
@@ -272,51 +342,61 @@ for i, job_loc in enumerate(job_loc):
     temp = df_known[df_known.job_location == job_loc]
     sns.boxplot(x='original_salary_year_avg', data=temp, ax=ax[i], orient='h')
 
-fig.suptitle('Salary distribution for different job titles', ...)
+fig.suptitle('Salary distribution for top 10 job location', ...)
 ```
 
-#### Output
-
+### Output
 <table align="center">
   <tr>
     <td align="center" width="50%">
-      <img src="image-4.png" alt="Junior roles" width="90%", height=300>
-      <br><b>Distribution by Job Title</b>
+      <img src="./plots/output-4.png" alt="Distribution by Job Title" width="90%" height="300">
+      <br><strong>Distribution by Job Title</strong>
     </td>
     <td align="center" width="50%">
-      <img src="image-5.png" alt="Senior roles" width="90%", height=300>
-      <br><b>Distribution by Location</b>
+      <img src="./plots/output-5.png" alt="Distribution by Location" width="90%" height="300">
+      <br><strong>Distribution by Location</strong>
     </td>
   </tr>
 </table>
 
-#### Insights (by Job Title)
 
-- Clear Pay Hierarchy: There is a distinct pay scale by role. Senior Scientist, Machine Learning Engineer, and Senior Engineer roles have the highest median salaries (all above $150k).
+### Insights
+<ul>
+  <li>
+    <strong>Salary by Job Title:</strong> Senior roles like <strong>Senior Data Scientist</strong> and 
+    <strong>Machine Learning Engineer</strong> show the highest median salaries, often exceeding 
+    <strong>$150K+</strong>. In contrast, entry-level positions such as <strong>Data Analyst</strong> 
+    and <strong>Business Analyst</strong> cluster around the <strong>$80K–$120K</strong> range, 
+    showing a clear pay jump with experience and technical specialization.
+  </li>
 
-- Analyst vs. Scientist/Engineer: Data Scientist and Data Engineer roles form a "mid-tier" with medians around $130k-$135k. Analyst roles (Senior, Business, and Data Analyst) are at the bottom of the pay scale, with medians ranging from $90k to $110k.
+  <li>
+    <strong>Location-based pay trends:</strong> Major tech hubs such as 
+    <strong>San Francisco</strong>, <strong>New York</strong>, and <strong>Los Angeles</strong> consistently offer the <strong>highest compensation</strong>, driven by demand and cost of living, while regions like <strong>Tampa</strong> and <strong>Miami</strong> show comparatively lower salary ranges.
+  </li>
 
-- Seniority Pays: "Senior" versions of roles (Data Scientist, Data Engineer, Data Analyst) consistently have higher median salaries and a wider upper range than their non-senior counterparts.
+  <li>
+    <strong>Wider pay variability in senior and technical roles:</strong> Positions such as 
+    <strong>Data Scientist</strong> and <strong>Data Engineer</strong> display broader 
+    salary distributions, indicating high variability based on <strong>experience, project complexity,</strong> 
+    and <strong>industry domain.</strong>
+  </li>
 
+  <li>
+    <strong>Key takeaway:</strong> Salary growth in data roles depends heavily on both 
+    <strong>career level</strong> and <strong>geographic location</strong>. Professionals aiming for 
+    top-tier compensation should focus on <strong>senior technical roles</strong> in major tech cities 
+    while building expertise in high-demand domains like <strong>AI and data engineering.</strong>
+  </li>
+</ul>
 
-#### Insights (by Location)
+## 4. What are the most optimal skills to learn?
 
-- Tech Hub Premium: Coastal tech hubs, particularly San Francisco, CA, and New York, NY, show significantly higher median salaries and a much wider upper range (interquartile range) than other locations.
-
-- Major Market Differences: While all top 10 locations are major metro areas, cities like Atlanta, GA, and Dallas, TX, have noticeably lower median salaries and a more compressed pay range, likely reflecting a lower cost of living and different market dynamics.
-
-- Location Matters: The data clearly shows that location is a major factor in salary, with medians for the same roles varying by tens of thousands of dollars between major cities.
-
-### 4. What are the most optimal skills to learn?
-
-This final analysis identifies the "most optimal" skills for a Data Analyst, defined as those that are both high in demand and high-paying.
-
-To find this balance, I filtered the dataset for 'Data Analyst' roles and un-nested the job_skills column. I then grouped by skill to get both the job_count (demand) and mean_salary (pay) for every skill. From this, I selected the top 10 most in-demand skills and plotted their percentage share (demand) against their mean salary (pay) on a scatter plot to visualize which skills offer the best return on investment.
+This analysis identifies the most optimal skills—those that are both high in demand and high-paying. I filtered the data for ‘Data Analyst’ roles, expanded the job_skills column, and grouped each skill by job_count and mean_salary. The top 10 in-demand skills were then plotted on a scatter chart showing their demand vs. average pay to reveal which skills offer the best return on investment.
 
 View my notebook with detailed steps here: [5_Most_Optimal_Skills.ipynb](5_Most_Optimal_Skills.ipynb)
 
-#### Visualize Data
-
+### Visualize Data
 ``` python
 # selecting job role
 job_role = 'Data Analyst'
@@ -349,40 +429,64 @@ for i, skill in enumerate(df_scatter_data.index):
 plt.title(f"Skill Demand vs Mean Salary for {job_role}", ...)
 ```
 
-#### Output
-<img src="image-6.png" alt="Optimal Skills Scatter Plot">
+### Output
+<div style="text-align: center;">
+  <img src="./plots/output-6.png" alt="Most Demanded Skills">
+</div>
 
-#### Insights
+### Insights
 
-The scatter plot visualizes the trade-off between a skill's demand and its average salary. The skills can be grouped into four clear quadrants:
+<h4><strong>Insights</strong></h4>
 
-- High Demand, Lower Pay (Bottom-Right): This quadrant is dominated by SQL, Excel, and Tableau. These are foundational skills; they are the most requested and essential for getting an entry-level job, but they do not command the highest salaries on their own.
+<ul>
+  <li>
+    <strong>Python and SQL remain the most optimal core skills</strong> across nearly all data roles — 
+    offering both <strong>high demand</strong> and <strong>competitive pay</strong>. They consistently 
+    appear on the upper right of the demand-salary charts, making them essential for any data career path.
+  </li>
 
-- High Demand, High Pay (Top-Right): This is the "optimal" quadrant. Python and R are both in high demand (appearing in 18-28% of postings) and are associated with a significantly higher average salary (around $93k). This makes them the best skills to learn for maximizing job opportunities and earning potential.
+  <li>
+    <strong>Strategic skill positioning by role:</strong>  
+    For <strong>Data Scientists</strong> and <strong>Engineers</strong>, skills like <strong>Spark</strong>, 
+    <strong>TensorFlow</strong>, and <strong>Kafka</strong> show moderate demand but offer 
+    <strong>top-tier salaries</strong>, marking them as high-value differentiators.  
+    Meanwhile, <strong>Analysts</strong> benefit most from blending widely used tools like 
+    <strong>SQL</strong> and <strong>Tableau</strong> with an intermediate programming skill like 
+    <strong>Python</strong> to unlock growth opportunities.
+  </li>
 
-- Lower Demand, Lower Pay (Bottom-Left): This group includes PowerPoint, Word, and Oracle. These skills are either general business software or more traditional database skills that are less in-demand and offer lower pay within data analysis roles compared to modern alternatives.
+  <li>
+    <strong>Key takeaway:</strong> The most optimal career growth strategy is to build 
+    a foundation in <strong>Python</strong> and <strong>SQL</strong>, then expand into 
+    role-specific tools — <strong>Tableau/Power BI</strong> for Analysts, 
+    <strong>ML frameworks</strong> for Scientists, and <strong>Cloud + Big Data</strong> 
+    tools for Engineers and Senior roles.
+  </li>
+</ul>
 
-- Lower Demand, Higher Pay (Top-Left): SAS and Power BI sit in this area. They offer good salaries (around $91k) but are requested in fewer job postings (18-20%) than the foundational skills or Python/R. They represent valuable, specialized skill sets.
 
 
 ## Conclusion
+<p>
+  The findings reveal a consistent trend across the data job landscape:
+</p>
 
+<ul>
+  <li><strong>Python and SQL</strong> remain the foundational skills across nearly every data role.</li>
+  <li><strong>Data Analysts</strong> benefit from strong <strong>reporting and visualization tools</strong>, while 
+      <strong>Data Scientists</strong> and <strong>Data Engineers</strong> command higher pay through 
+      <strong>programming, cloud, and machine learning expertise</strong>.</li>
+  <li><strong>Location and seniority</strong> significantly influence salaries, with major tech hubs and senior technical roles 
+      offering top-tier compensation.</li>
+  <li>The <strong>most optimal career strategy</strong> is progressive learning — starting with analytical fundamentals, 
+      then advancing into <strong>automation, cloud computing, and AI frameworks</strong>.</li>
+</ul>
 
-
-## What I learned
-
-- How to preprocess messy job posting data: parsing free-text salary ranges and skill lists.
-- Techniques to explode nested lists (skills) and aggregate skill frequency by job title.
-- How to derive salary estimates from textual salary mentions and compare distributions across groups.
-- Ways to combine frequency and salary metrics to suggest an optimal skill priority list.
-
-## Challenges I faced
-
-- Inconsistent salary formats and missing salary fields — required careful parsing and conservative assumptions.
-- Job title heterogeneity (same role described with many variations) — needed normalization rules.
-- Extracting reliable skill tokens from free-text job descriptions and separating soft vs technical skills.
-- Some job postings lacked location or experience fields which limited certain subgroup analyses.
-
+<p>
+  In conclusion, the data job market rewards <strong>technical versatility</strong> and 
+  <strong>continuous skill development</strong>. Professionals who combine strong technical execution with business understanding 
+  are best positioned to thrive in this rapidly evolving field.
+</p>
 
 ## How to Reproduce
 
@@ -398,4 +502,3 @@ The scatter plot visualizes the trade-off between a skill's demand and its avera
 
 - The dataset covers 2023 job postings — results may not reflect hiring trends beyond that period.
 - To address widespread missing salaries, nulls were imputed using the median for that specific job title and location. Treat these imputed salaries as estimates.
-
