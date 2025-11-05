@@ -159,9 +159,17 @@ fig.tight_layout()
 ```
 #### Output
 <p align="center">
-  <img src="image.png" alt="Junior roles" width="45%">
-  <img src="image-1.png" alt="Senior roles" width="45%", height='358px'>
+  <figure style="display:inline-block; text-align:center; margin:10px;">
+    <img src="image.png" alt="Junior roles" height="250">
+    <figcaption><b>For Junior Roles</b></figcaption>
+  </figure>
+  <figure style="display:inline-block; text-align:center; margin:10px;">
+    <img src="image-1.png" alt="Senior roles" height="250">
+    <figcaption><b>For Senior Roles</b></figcaption>
+  </figure>
 </p>
+
+
 
 
 
