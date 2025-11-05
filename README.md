@@ -158,16 +158,17 @@ fig.suptitle('Most Demanded job skills by job title', fontsize=18, fontweight='b
 fig.tight_layout()
 ```
 #### Output
-<p align="center">
-  <figure style="display:inline-block; text-align:center; margin:10px;">
-    <img src="image.png" alt="Junior roles" height="250">
+<div align="center" style="display: flex; justify-content: center; flex-wrap: nowrap; gap: 20px;">
+  <figure style="flex: 1; text-align: center; margin: 0;">
+    <img src="image.png" alt="Junior roles" style="width: 100%; height: 350px; object-fit: fit;">
     <figcaption><b>For Junior Roles</b></figcaption>
   </figure>
-  <figure style="display:inline-block; text-align:center; margin:10px;">
-    <img src="image-1.png" alt="Senior roles" height="250">
+  <figure style="flex: 1; text-align: center; margin: 0;">
+    <img src="image-1.png" alt="Senior roles" style="width: 100%; height: 350px; object-fit: fit;">
     <figcaption><b>For Senior Roles</b></figcaption>
   </figure>
-</p>
+</div>
+
 
 
 
