@@ -320,6 +320,8 @@ sns.barplot(data=most_paid_skills, x='mean', y='job_skills', ax=ax[1])
 
 To get an accurate view of salary distributions, I used the original salary data (before imputation) to preserve the true variance. I grouped the data by job_title_short and by job location to get the median salary for each role and for top 10 job location. Then sorted them from highest to lowest. Finally, I plotted box plots for both series to visualize the salary ranges, 25th/75th percentiles, medians, and outliers.
 
+View my notebook with detailed steps here: [4_Salary_Analysis.ipynb](4_Salary_Analysis.ipynb)
+
 ### Visualize Data
 ``` python
 # plotting salary distriubtion by job title
@@ -381,13 +383,6 @@ fig.suptitle('Salary distribution for top 10 job location', ...)
     salary distributions, indicating high variability based on <strong>experience, project complexity,</strong> 
     and <strong>industry domain.</strong>
   </li>
-
-  <li>
-    <strong>Key takeaway:</strong> Salary growth in data roles depends heavily on both 
-    <strong>career level</strong> and <strong>geographic location</strong>. Professionals aiming for 
-    top-tier compensation should focus on <strong>senior technical roles</strong> in major tech cities 
-    while building expertise in high-demand domains like <strong>AI and data engineering.</strong>
-  </li>
 </ul>
 
 ## 4. What are the most optimal skills to learn?
@@ -435,8 +430,6 @@ plt.title(f"Skill Demand vs Mean Salary for {job_role}", ...)
 </div>
 
 ### Insights
-
-<h4><strong>Insights</strong></h4>
 
 <ul>
   <li>
